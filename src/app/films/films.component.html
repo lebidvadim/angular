@@ -42,7 +42,7 @@
     Нету фильмов в списке.
   </div>
   <div class="row" *ngIf="flagFil == true">
-    <div class="col-12 mb-3" *ngFor="let fil of films">
+    <div class="col-12 mb-3" *ngFor="let fil of films; let idx = index">
       <div class="films border">
         <div class="films-item">
           <div class="img"><img src="{{ fil.Poster }}" alt="" width="100"></div>
@@ -56,7 +56,7 @@
         </div>
         <div class="footer-films border-top">
           <button type="button" class="btn btn-primary">Подробней</button>
-          <button type="button" class="btn btn-danger">Удалить</button>
+          <button type="button" class="btn btn-danger" (click)="delFilms(idx)">Удалить</button>
         </div>
       </div>
     </div>
