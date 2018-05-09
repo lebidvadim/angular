@@ -1,12 +1,64 @@
 <div class="container">
   <h1>Поиск фильмов</h1>
   <hr>
-  <form>
+  <form (ngSubmit)="searchFilms(form)" #form="ngForm">
     <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Найти">
+      <input type="text" class="form-control" placeholder="Название фильма" ngModel name="nameFilm">
       <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">Найти</button>
+        <button class="btn btn-outline-secondary" type="submit">Найти</button>
       </div>
     </div>
   </form>
+  <hr>
+  <h3 class="mb-3">Результат</h3>
+  <div class="alert alert-primary" role="alert" *ngIf="flagFilm == ''">
+    Вы еще не производили поиск филма.
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="flagFilm == 'no'">
+    Такого фильма нету
+  </div>
+  <div class="row">
+    <div class="col-12" *ngIf="flagFilm == 'yes'">
+      <div class="films border">
+        <div class="films-item">
+          <div class="img"><img src="{{ filmSearch.Poster }}" alt="" width="100"></div>
+          <div class="info border-left">
+            <div><b>Имя:</b> {{ filmSearch.Title }}</div>
+            <div><b>Год:</b> {{ filmSearch.Year }}</div>
+            <div><b>Жанр:</b> {{ filmSearch.Genre }}</div>
+            <div><b>Актеры:</b> {{ filmSearch.Actors }}</div>
+            <div><b>Описание:</b> {{ filmSearch.Plot }}</div>
+          </div>
+        </div>
+        <div class="footer-films border-top">
+          <button type="button" class="btn btn-success" (click)="addFilm()">Добавить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <h3 class="mb-3">Список фильмов</h3>
+  <div class="alert alert-secondary" role="alert">
+    Нету фильмов в списке.
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="films border">
+        <div class="films-item">
+          <div class="img" style="background-image: url('https://ia.media-imdb.com/images/M/MV5BMWY0MmUyNTAtMzZkMi00NmZkLTlkOGMtMDlhYjUyNWJmMjcxXkEyXkFqcGdeQXVyNTUwNjUzODc@._V1_SX300.jpg')"></div>
+          <div class="info border-left">
+            <div><b>Имя:</b> The Last Ship</div>
+            <div><b>Год:</b> 2014</div>
+            <div><b>Жанр:</b> Action, Drama, Sci-Fi</div>
+            <div><b>Актеры:</b> Eric Dane, Adam Baldwin, Charles Parnell, Travis Van Winkle</div>
+            <div><b>Описание:</b> The crew of a naval destroyer is forced to confront the reality of a new existence when a pandemic kills off most of the earth's population.</div>
+          </div>
+        </div>
+        <div class="footer-films border-top">
+          <button type="button" class="btn btn-primary">Подробней</button>
+          <button type="button" class="btn btn-danger">Удалить</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

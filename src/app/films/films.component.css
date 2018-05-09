@@ -1,0 +1,26 @@
+.films{
+  border-radius: 5px;
+  background-color: #fff;
+}
+.films .films-item{
+  display: flex;
+  padding: 1rem;
+}
+.films .img{
+  width: 100px;
+  height: 150px;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+.films .img img{
+  width: 100px;
+  border-radius: 5px;
+}
+.films .info{
+  padding-left: 1rem;
+}
+.films .footer-films{
+  width: 100%;
+  background-color: #f5f5f5;
+  padding: 1rem;
+}
