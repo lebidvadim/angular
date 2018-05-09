@@ -11,14 +11,14 @@
   </form>
 
   <h3 class="mb-3">Результат</h3>
-  <div class="alert alert-primary" role="alert" *ngIf="flagFilm == ''">
+  <div class="alert alert-primary" role="alert" *ngIf="!filmSearch.Response">
     Вы еще не производили поиск филма.
   </div>
-  <div class="alert alert-danger" role="alert" *ngIf="flagFilm == 'no'">
+  <div class="alert alert-danger" role="alert" *ngIf="filmSearch.Response == 'False'">
     Такого фильма нету
   </div>
   <div class="row">
-    <div class="col-12 mb-3" *ngIf="flagFilm == 'yes'">
+    <div class="col-12 mb-3" *ngIf="filmSearch.Response == 'True'">
       <div class="films border">
         <div class="films-item">
           <div class="img"><img src="{{ filmSearch.Poster }}" alt="" width="100"></div>

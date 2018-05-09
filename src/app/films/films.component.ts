@@ -10,9 +10,9 @@ import {Response} from '@angular/http';
 })
 
 export class FilmsComponent {
+
   filmSearch = {};
   films = [];
-  flagFilm = '';
   flagFil = false;
 
   constructor(private filmsService: FilmsService) { }
@@ -22,13 +22,7 @@ export class FilmsComponent {
       .getFilms(form.value.nameFilm)
       .subscribe((responce: Response) => {
         const data = responce.json();
-        if (data.Response !== 'False') {
-          this.filmSearch = data;
-          this.flagFilm = 'yes';
-        }
-        else{
-          this.flagFilm = 'no';
-        }
+        this.filmSearch = data;
       });
   }
 
@@ -36,9 +30,11 @@ export class FilmsComponent {
     this.films.push(this.filmSearch);
     if(this.films.length > 0)
       this.flagFil = true;
-    //console.log(this.films);
   }
+
   delFilms(id: number) {
     this.films.splice(id, 1);
+    if(this.films.length == 0)
+      this.flagFil = false;
   }
 }
