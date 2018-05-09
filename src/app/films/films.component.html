@@ -9,7 +9,7 @@
       </div>
     </div>
   </form>
-  <hr>
+
   <h3 class="mb-3">Результат</h3>
   <div class="alert alert-primary" role="alert" *ngIf="flagFilm == ''">
     Вы еще не производили поиск филма.
@@ -18,7 +18,7 @@
     Такого фильма нету
   </div>
   <div class="row">
-    <div class="col-12" *ngIf="flagFilm == 'yes'">
+    <div class="col-12 mb-3" *ngIf="flagFilm == 'yes'">
       <div class="films border">
         <div class="films-item">
           <div class="img"><img src="{{ filmSearch.Poster }}" alt="" width="100"></div>
@@ -36,22 +36,22 @@
       </div>
     </div>
   </div>
-  <hr>
+
   <h3 class="mb-3">Список фильмов</h3>
-  <div class="alert alert-secondary" role="alert">
+  <div class="alert alert-secondary" role="alert" *ngIf="flagFil == false">
     Нету фильмов в списке.
   </div>
-  <div class="row">
-    <div class="col-12">
+  <div class="row" *ngIf="flagFil == true">
+    <div class="col-12 mb-3" *ngFor="let fil of films">
       <div class="films border">
         <div class="films-item">
-          <div class="img" style="background-image: url('https://ia.media-imdb.com/images/M/MV5BMWY0MmUyNTAtMzZkMi00NmZkLTlkOGMtMDlhYjUyNWJmMjcxXkEyXkFqcGdeQXVyNTUwNjUzODc@._V1_SX300.jpg')"></div>
+          <div class="img"><img src="{{ fil.Poster }}" alt="" width="100"></div>
           <div class="info border-left">
-            <div><b>Имя:</b> The Last Ship</div>
-            <div><b>Год:</b> 2014</div>
-            <div><b>Жанр:</b> Action, Drama, Sci-Fi</div>
-            <div><b>Актеры:</b> Eric Dane, Adam Baldwin, Charles Parnell, Travis Van Winkle</div>
-            <div><b>Описание:</b> The crew of a naval destroyer is forced to confront the reality of a new existence when a pandemic kills off most of the earth's population.</div>
+            <div><b>Имя:</b> {{ fil.Title }}</div>
+            <div><b>Год:</b> {{ fil.Year }}</div>
+            <div><b>Жанр:</b> {{ fil.Genre }}</div>
+            <div><b>Актеры:</b> {{ fil.Actors }}</div>
+            <div><b>Описание:</b> {{ fil.Plot }}</div>
           </div>
         </div>
         <div class="footer-films border-top">

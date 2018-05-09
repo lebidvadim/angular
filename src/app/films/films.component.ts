@@ -10,15 +10,16 @@ import {Response} from '@angular/http';
 })
 export class FilmsComponent {
   filmSearch = {};
-  films: [{title: string}];
+  films = [];
   flagFilm = '';
+  flagFil = false;
   constructor(private filmsService: FilmsService) { }
   searchFilms(form: NgForm) {
     this.filmsService
       .getFilms(form.value.nameFilm)
       .subscribe((responce: Response) => {
         const data = responce.json();
-        console.log(data);
+        //console.log(data);
         if (data.Response !== 'False') {
           this.filmSearch = data;
           this.flagFilm = 'yes';
@@ -30,11 +31,9 @@ export class FilmsComponent {
   }
   addFilm() {
 
-    /*this.films.push({
-      title: toString(this.filmSearch.Title)
-    });
-
-    console.log(this.films);*/
-
+    this.films.push(this.filmSearch);
+    if(this.films.length > 0)
+      this.flagFil = true;
+    //console.log(this.films);
   }
 }
